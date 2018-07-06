@@ -1,3 +1,5 @@
+This script is idented to play live broadcast content from mitele.es
+
 # Usage
 
 ./get.py
