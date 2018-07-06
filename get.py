@@ -10,6 +10,7 @@ if sys.version_info[0] < 3:
 else:
     from builtins import Exception
 
+
 def get_link(session, channel):
     session.headers.update({
         'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
@@ -24,7 +25,6 @@ def get_link(session, channel):
         'authority': 'indalo.mediaset.es',
         'accept': 'application/json',
     }
-
 
     r = session.get('https://indalo.mediaset.es/mmc-player/api/mmc/v1/'+ channel +'/live/html5.json', headers=request_headers)
 
