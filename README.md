@@ -6,10 +6,8 @@ or
 
 ./get.py <telecinco|cuatro|boing|divinity|fdf|energy|bemad|futbol-mitele>
 
-# Example
+Example
 
 ./get.py boing
 
-# Note
-
-telecinco and cuatro may not work
+Note: telecinco and cuatro may not work
