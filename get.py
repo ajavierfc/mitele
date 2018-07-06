@@ -62,13 +62,14 @@ def get_link(session, channel):
 
 
 if __name__ == '__main__':
-    channels = ['telecinco', 'cuatro', 'boing', 'divinity', 'fdf', 'energy', 'bemad', 'futbol-mitele']
 
     with requests.Session() as s:
         if len(sys.argv) > 1:
             print(get_link(s, sys.argv[1]))
 
         else:
+            channels = ['telecinco', 'cuatro', 'boing', 'divinity', 'fdf', 'energy', 'bemad', 'futbol-mitele']
+
             print("Channels\n")
             for i, c in enumerate(channels):
                 print(str(i) + '\t' + c)
