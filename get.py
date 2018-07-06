@@ -1,15 +1,14 @@
+#!/usr/bin/env python3
+
 import sys
 import requests
 import json
 import subprocess
 
 if sys.version_info[0] < 3:
-    import exceptions
+    from exceptions import Exception
 else:
-    import builtins as exceptions
-
-class MiTeleException(exceptions.Exception):
-    pass
+    from builtins import Exception
 
 def get_link(session, channel):
     session.headers.update({
@@ -30,8 +29,7 @@ def get_link(session, channel):
     r = session.get('https://indalo.mediaset.es/mmc-player/api/mmc/v1/'+ channel +'/live/html5.json', headers=request_headers)
 
     if r.status_code != 200:
-        print("Error {}, message: {}".format(r.status_code, r.text.encode('utf-8')))
-        raise MiTeleException(r.status_code)
+        raise Exception(r.status_code, "Error {}, message: {}".format(r.status_code, r.text.encode('utf-8')))
 
     live_info = json.loads(r.text.encode('utf-8'))
 
@@ -53,14 +51,12 @@ def get_link(session, channel):
     r = session.post("https:" + location['gat'], headers=request_headers, data=json.dumps(payload))
 
     if r.status_code != 200:
-        print("Error {}, message: {}".format(r.status_code, r.text.encode('utf-8')))
-        raise MiTeleException(r.status_code)
+        raise Exception(r.status_code, "Error {}, message: {}".format(r.status_code, r.text.encode('utf-8')))
 
     stream_info = json.loads(r.text.encode('utf-8'))
 
     if not stream_info['stream']:
-        print("No stream returned")
-        raise MiTeleException(1)
+        raise Exception(1, "No stream returned")
 
     return stream_info['stream']
 
