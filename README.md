@@ -12,7 +12,8 @@ or
 
 Examples
 
-Linux: mpv `./get.py boing`
+Linux: mpv \`./get.py boing)\`
+
 Windows (Powershell): & 'C:\Program Files\VideoLAN\VLC\vlc.exe' (python .\get.py boing)
 
 Note: telecinco and cuatro may not work
