@@ -14,8 +14,8 @@ _Get link channel (must be used within the script session, see example below)_
 
 __Examples__
 
-Linux: mpv \`./get.py boing\`
+Linux: ``mpv `./get.py boing` ``
 
-Windows (Powershell): & 'C:\Program Files\VideoLAN\VLC\vlc.exe' (python .\get.py boing)
+Windows (Powershell): `& 'C:\Program Files\VideoLAN\VLC\vlc.exe' (python .\get.py boing)`
 
 Note: telecinco and cuatro may not work
