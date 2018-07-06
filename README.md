@@ -1,4 +1,4 @@
-Usage
+# Usage
 
 ./get.py
 
@@ -6,10 +6,10 @@ or
 
 ./get.py <telecinco|cuatro|boing|divinity|fdf|energy|bemad|futbol-mitele>
 
-Example
+# Example
 
 ./get.py boing
 
-Note
+# Note
 
 telecinco and cuatro may not work
