@@ -4,15 +4,18 @@ Require requests
 
 # Usage
 
+_Choose channel and play (check the player path in the source)_
+
 ./get.py
 
-or
+_Get link channel (must be used within the script session, see example below)_
 
 ./get.py <telecinco|cuatro|boing|divinity|fdf|energy|bemad|futbol-mitele>
 
-Examples
+__Examples__
 
-Linux: mpv `./get.py boing`
-Windows (Powershell): & 'C:\Program Files\VideoLAN\VLC\vlc.exe' (python .\get.py boing)
+Linux: ``mpv `./get.py boing` ``
+
+Windows (Powershell): `& 'C:\Program Files\VideoLAN\VLC\vlc.exe' (python .\get.py boing)`
 
 Note: telecinco and cuatro may not work
