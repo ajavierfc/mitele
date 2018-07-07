@@ -4,6 +4,7 @@ import sys
 import requests
 import json
 import subprocess
+import re
 
 if sys.version_info[0] < 3:
     from exceptions import Exception
@@ -11,6 +12,7 @@ else:
     from builtins import Exception
 
 __PLAYER = "mpv"
+__QUALITY_OPTION = 2 # 0..3
 
 def get_link(session, channel):
     session.headers.update({
@@ -19,10 +21,10 @@ def get_link(session, channel):
         'origin': 'https://www.mitele.es',
         'accept-encoding': 'gzip',
         'accept-language': 'es-ES,es;q=0.9,ca;q=0.8,en;q=0.7',
+        'referer': 'https://www.mitele.es/live/index.html?alias=' + channel,
     })
 
     request_headers = {
-        'referer': 'https://www.mitele.es/live/index.html?alias=' + channel,
         'authority': 'indalo.mediaset.es',
         'accept': 'application/json',
     }
@@ -37,7 +39,6 @@ def get_link(session, channel):
     location = live_info['locations'][0]
 
     request_headers = {
-        'referer': 'https://www.mitele.es/live/index.html?alias=' + channel,
         'authority': 'gatekeeper.mediaset.es',
         'accept': 'application/json, text/plain, */*',
         'content-type': 'application/json;charset=UTF-8'
@@ -54,12 +55,24 @@ def get_link(session, channel):
     if r.status_code != 200:
         raise Exception(r.status_code, "Error {}, message: {}".format(r.status_code, r.text.encode('utf-8')))
 
-    stream_info = json.loads(r.text.encode('utf-8'))
+    stream_info = json.loads(r.text)
 
     if not stream_info['stream']:
         raise Exception(1, "No stream returned")
 
-    return stream_info['stream']
+    request_headers = {
+        'Accept': '*/*',
+        'Connection': 'keep-alive',
+        'Cache-Control': 'no-cache'
+    }
+
+    r = session.get(stream_info['stream'], headers=request_headers)
+
+    options = re.findall('(?<=\n)[^#][^\n]+', r.text)
+
+    stream_link = re.match('^.*'+ channel +'/(?=[^\.]+\.m3u)', stream_info['stream']).group(0) + options[__QUALITY_OPTION]
+
+    return stream_link
 
 
 if __name__ == '__main__':
