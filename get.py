@@ -68,9 +68,9 @@ def get_link(session, channel):
 
     r = session.get(stream_info['stream'], headers=request_headers)
 
-    options = re.findall('(?<=\n)[^#][^\n]+', r.text)
+    options = re.findall('^[^#][^\n]+', r.text, re.MULTILINE)
 
-    stream_link = re.match('^.*'+ channel +'/(?=[^\.]+\.m3u)', stream_info['stream']).group(0) + options[__QUALITY_OPTION]
+    stream_link = re.match('^.*/'+ channel +'/(?=[^\.]+\.m3u)', stream_info['stream']).group(0) + options[__QUALITY_OPTION]
 
     return stream_link
 
