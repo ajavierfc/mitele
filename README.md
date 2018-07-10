@@ -20,7 +20,7 @@ __Examples__
 
 Linux: ``mpv `python get.py boing` ``
 
-Windows (Powershell): `& 'C:\Program Files\VideoLAN\VLC\vlc.exe' (python .\get.py boing)`
+Windows (Powershell): `& 'C:\Program Files\VideoLAN\VLC\vlc.exe' (python get.py boing)`
 
 __Notes__
 
