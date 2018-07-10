@@ -14,7 +14,7 @@ _Get link channel (must be used within the script session, see example below)_
 
 _Player_
 
-Default player command is 'mpv', under windows you may want to use vlc, so set the player command as "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
+Default player command is 'mpv', under windows you may want to use vlc, so set the player command as `"C:\\\\Program Files\\\\VideoLAN\\\\VLC\\\\vlc.exe"`
 
 __Examples__
 
