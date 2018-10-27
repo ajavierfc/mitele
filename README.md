@@ -1,4 +1,4 @@
-This script is idented to play live broadcast content from mitele.es
+This script is coded to play live broadcast content from mitele.es
 
 Require requests
 
