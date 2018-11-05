@@ -1,3 +1,5 @@
+Discontinued as moved to https://github.com/ajavierfc/plugin.video.simpleaddon/tree/master/lib
+
 This script is coded to play live broadcast content from mitele.es
 
 Require requests
